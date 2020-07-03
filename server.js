@@ -4,11 +4,13 @@ const path = require("path");
 const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
 var tables = [];
 var waiting = [];
 
 const port = process.env.PORT || 8000;
 
+// view routes
 app.get("/", (req, res) => {
     console.log("home");
     res.sendFile(path.join(__dirname, "index.html"));
@@ -20,6 +22,28 @@ app.get("/tables", (req, res) => {
 });
 
 app.get("/reservations", (req, res) => {
+    console.log("reservations");
+    res.sendFile(path.join(__dirname, "reservation.html"));
+});
+
+// api post routes
+app.post("/waitlistapi", (req, res) => {
+    console.log("reservations");
+    res.sendFile(path.join(__dirname, "reservation.html"));
+});
+
+app.post("/tablesapi", (req, res) => {
+    console.log("reservations");
+    res.sendFile(path.join(__dirname, "reservation.html"));
+});
+
+// api get route0
+app.get("/waitlistapi", (req, res) => {
+    console.log("reservations");
+    res.sendFile(path.join(__dirname, "reservation.html"));
+});
+
+app.get("/tablesapi", (req, res) => {
     console.log("reservations");
     res.sendFile(path.join(__dirname, "reservation.html"));
 });
