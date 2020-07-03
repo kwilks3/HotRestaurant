@@ -41,7 +41,11 @@
                 </div>
               </div>
             </div>
-            
+            <a href="#" id = "clear">Clear Tables</a>
+            <span> | </span>
+            <a href="#">API Table Link</a>
+            <span> | </span>
+            <a href="#">API Waiting List</a>
   </body>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script type="text/javascript">
@@ -82,7 +86,13 @@
         })
         }
       )
+
     })
+    $("#clear").on("click", () => {
+      $("#waitingList").empty();
+      $("#currentReservations").empty();
+$.post("/api/tables", "clear"
+    )})
     
   </script>
 </html>
