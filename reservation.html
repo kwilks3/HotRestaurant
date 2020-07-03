@@ -38,6 +38,7 @@
                 >
               </div>
               <input
+                id="name"
                 type="text"
                 class="form-control"
                 aria-label="Sizing example input"
@@ -51,6 +52,7 @@
                 >
               </div>
               <input
+                id="phone-number"
                 type="text"
                 class="form-control"
                 aria-label="Sizing example input"
@@ -64,6 +66,7 @@
                 >
               </div>
               <input
+                id="email"
                 type="text"
                 class="form-control"
                 aria-label="Sizing example input"
@@ -77,13 +80,14 @@
                 >
               </div>
               <input
+                id="id"
                 type="text"
                 class="form-control"
                 aria-label="Sizing example input"
                 aria-describedby="inputGroup-sizing-sm"
               />
             </div>
-            <a href="#" class="btn btn-primary">Submit</a>
+            <a href="#" class="btn btn-primary" id="submitBtn">Submit</a>
           </div>
         </div>
       </div>
@@ -92,4 +96,23 @@
     <span> | </span>
     <a href="#">API Waiting List</a>
   </body>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script type="text/javascript">
+    $("#submitBtn").on("click", function(event) {
+      event.preventDefault();
+      var newReservation = {
+        customerName: $("#name").val().trim(),
+        phoneNumber: $("#phone-number").val().trim(),
+        customerEmail: $("#email").val().trim(),
+        customerID: $("#id").val().trim()
+      };
+
+      // Question: What does this code do??
+      $.post("/api/tables", newReservation)
+        .then(function(data) {
+          console.log("reservations.html", data);
+          alert(data);
+        });
+    });
+  </script>
 </html>
