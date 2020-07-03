@@ -5,8 +5,8 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-var tables = [];
-var waiting = [];
+var tablesApi = [];
+var waitlistApi = [];
 
 const port = process.env.PORT || 8000;
 
@@ -28,23 +28,19 @@ app.get("/reservations", (req, res) => {
 
 // api post routes
 app.post("/waitlistapi", (req, res) => {
-    console.log("reservations");
-    res.sendFile(path.join(__dirname, "reservation.html"));
+    res.json(waitlistApi);
 });
 
 app.post("/tablesapi", (req, res) => {
-    console.log("reservations");
-    res.sendFile(path.join(__dirname, "reservation.html"));
+    res.json(tablesApi);
 });
 
-// api get route0
+// api get routes
 app.get("/waitlistapi", (req, res) => {
-    console.log("reservations");
     res.sendFile(path.join(__dirname, "reservation.html"));
 });
 
 app.get("/tablesapi", (req, res) => {
-    console.log("reservations");
     res.sendFile(path.join(__dirname, "reservation.html"));
 });
 
